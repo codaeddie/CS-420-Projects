@@ -1,0 +1,92 @@
+#include <iostream>
+#include<array>
+#include<algorithm>
+
+using namespace std;
+
+int main()
+{
+    array<int, 10> arr = { 1,5,3,14,16,2,35,6,3,46};
+
+    sort(begin(arr), end(arr), [](int a, int b) {return a > b; });
+
+    for (auto item : arr)
+      cout << item << " ";
+
+    return 0;
+}
+
+#include <iostream>
+#include <list>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    list<int> s = {12,4,25,56,74,3,56};
+    
+    auto is_even = [](int i) { return (i % 2) == 0; };
+    s.remove_if(is_even);
+    
+    for ( auto item : s )
+    {
+        cout <<item << " ";
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class HelloWorld {
+  static void Main() {
+   
+
+int[] scores = { 97, 92, 81, 60 };
+
+
+IEnumerable<int> scoreQuery =
+    from score in scores
+    where score > 80
+    select score;
+    
+    foreach (int i in scoreQuery)
+{
+    Console.Write(i + " ");
+}
+Console.WriteLine();
+
+var filterred = scores.Where(num =>num >80);
+
+foreach (int i in filterred)
+{
+    Console.Write(i + " ");
+}
+   
+  }
+}
+
+using System;
+using System.Collections.Generic;  
+using System.Linq;  
+public static class demo  
+{  
+   public static void Main()  
+    {  
+        List<int> list = new List<int>() { 1, 2, 3, 4, 5, 6 };  
+        List<int> evenNumbers = list.FindAll(x => (x % 2) == 0);  
+  
+        foreach (var num in evenNumbers)  
+        {  
+           Console.Write("{0} ", num);  
+        }  
+        Console.WriteLine();  
+        Console.Read();  
+
+   }  
+}
+
+
+

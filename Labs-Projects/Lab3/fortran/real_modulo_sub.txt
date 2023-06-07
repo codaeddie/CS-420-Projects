@@ -1,0 +1,69 @@
+module kind_parameter
+   implicit none
+   public
+
+   !> Single precision real numbers, 6 digits, range 10⁻³⁷ to 10³⁷-1; 32 bits
+   integer, parameter :: sp = selected_real_kind(6, 37)
+   !> Double precision real numbers, 15 digits, range 10⁻³⁰⁷ to 10³⁰⁷-1; 64 bits
+   integer, parameter :: dp = selected_real_kind(15, 307)
+   !> Quadruple precision real numbers, 33 digits, range 10⁻⁴⁹³¹ to 10⁴⁹³¹-1; 128 bits
+   integer, parameter :: qp = selected_real_kind(33, 4931)
+
+   !> Char length for integers, range -2⁷ to 2⁷-1; 8 bits
+   integer, parameter :: i1 = selected_int_kind(2)
+   !> Short length for integers, range -2¹⁵ to 2¹⁵-1; 16 bits
+   integer, parameter :: i2 = selected_int_kind(4)
+   !> Length of default integers, range -2³¹ to 2³¹-1; 32 bits
+   integer, parameter :: i4 = selected_int_kind(9)
+   !> Long length for integers, range -2⁶³ to 2⁶³-1; 64 bits
+   integer, parameter :: i8 = selected_int_kind(18)
+  real(dp) :: a, b, c
+   contains      
+   subroutine show_nums()          
+        print*, "a is : ", a 
+        print*, "b is : ", b
+        print*, "c is: ", c      
+   end subroutine show_nums 
+
+end module kind_parameter
+module constants  
+implicit none 
+
+   real, parameter :: pi = 3.1415926536  
+   real, parameter :: e = 2.7182818285 
+   
+contains      
+   subroutine show_consts()          
+      print*, "Pi = ", pi          
+      print*,  "e = ", e     
+   end subroutine show_consts 
+   
+end module constants 
+
+
+program module_example     
+use constants  
+use kind_parameter
+implicit none     
+
+   real :: x, ePowerx, area, radius 
+  
+   
+   x = 2.0
+   radius = 7.0
+   ePowerx = e ** x
+   area = pi * radius**2     
+   
+  
+   a = 1.0_dp
+   b = 3.005_dp
+   c = 1.34e8_dp
+   
+   call show_consts() 
+   
+   print*, "e raised to the power of 2.0 = ", ePowerx
+   print*, "Area of a circle with radius 7.0 = ", area  
+   
+   call show_nums() 
+   
+end program module_example

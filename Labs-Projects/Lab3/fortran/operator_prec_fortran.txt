@@ -1,0 +1,27 @@
+program precedenceOp
+! this program checks operator precedance
+
+implicit none  
+
+   ! variable declaration
+   integer :: a, b, c, d, e
+   
+   ! assigning values 
+   a = 20   
+   b = 10
+   c = 15
+   d = 5
+  
+   e = (a + b) * c / d      ! ( 30 * 15 ) / 5
+   print *, "Value of (a + b) * c / d is :",  e 
+
+   e = ((a + b) * c) / d    ! (30 * 15 ) / 5
+   print *, "Value of ((a + b) * c) / d is  : ",  e 
+
+   e = (a + b) * (c / d);   ! (30) * (15/5)
+   print *, "Value of (a + b) * (c / d) is  : ",  e 
+
+   e = a + (b * c) / d;     !  20 + (150/5)
+   print *, "Value of a + (b * c) / d is  :   " ,  e 
+  
+end program precedenceOp

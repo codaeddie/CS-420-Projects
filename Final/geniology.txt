@@ -1,0 +1,38 @@
+% facts
+father_of(john, sarah).
+father_of(john, mike).
+father_of(mike, tim).
+mother_of(kate, sarah).
+mother_of(kate, mike).
+mother_of(sarah, lisa).
+mother_of(sarah, bob).
+mother_of(sarah, tom).
+mother_of(lisa, johnny).
+mother_of(lisa, jenny).
+mother_of(lisa, jeremy).
+
+% rules
+ancestor_of(X, Y) :-
+    father_of(X, Y).
+ancestor_of(X, Y) :-
+    mother_of(X, Y).
+ancestor_of(X, Y) :-
+    father_of(Z, Y),
+    ancestor_of(X, Z).
+ancestor_of(X, Y) :-
+    mother_of(Z, Y),
+    ancestor_of(X, Z).
+
+aunt_or_uncle_of(X, Y) :-
+    parent_of(Z, Y),
+    sibling_of(X, Z).
+
+sibling_of(X, Y) :-
+    parent_of(Z, X),
+    parent_of(Z, Y),
+    X \= Y.
+
+parent_of(X, Y) :-
+    father_of(X, Y).
+parent_of(X, Y) :-
+    mother_of(X, Y).

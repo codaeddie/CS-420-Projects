@@ -1,0 +1,5 @@
+C:\Users\eddie\OneDrive\Desktop\CS420\Lab3\fortran\matrixmult001.F95(34) : warning 868 - Opening unit 1 may affect the operation of input from the default unit '*' - are you sure you want to do this?
+C:\Users\eddie\OneDrive\Desktop\CS420\Lab3\fortran\matrixmult001.F95(41) : warning 868 - Closing unit 1 may affect the operation of input from the default unit '*' - are you sure you want to do this?
+[SLINK64 v3.04, Copyright (c) Silverfrost Ltd. 2015-2022]
+Loading C:\Users\eddie\OneDrive\Desktop\CS420\Lab3\fortran\lgotemp@.obj
+Creating executable file C:\Users\eddie\OneDrive\Desktop\CS420\Lab3\fortran\matrixmult001.exe

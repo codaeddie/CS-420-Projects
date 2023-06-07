@@ -1,0 +1,140 @@
+Bit Level Manipulation
+
+Write a simple bit manipulation code that allows users to input decimal number and bit system (i.g 4/8/16/32/64) in which binary number will be outputted. Apart from that you have to calculate the corresponding one's and two's complement of the decimal number. However, the only named variables you may use are pointer variables; all others must be anonymous variables.
+Pay close attention to the following aspects:
+
+    error checking
+    loop function
+    pointer variables
+    code efficiency(smart code), readability, documentation.
+    
+    
+    
+    int* ptr = (int*) malloc(sizeof(int));
+    ______________________________________________
+    int* i = (int*)malloc(sizeof(int));
+    int* size = (int*)malloc(sizeof(int));
+    
+    *i = 0;
+    *size = 5;
+
+    for(;*i < *size;){
+        //do stuff...
+
+        *i += 1; //incrementing at the end
+    }
+    
+    
+    int* array = (int*)malloc(arraySize * sizeof(int));
+int* arrayStartPtr = array;
+int* arrayEndPtr = array + arraySize;
+
+while (arrayStartPtr < arrayEndPtr) {
+    do stuff
+    arrayStartPtr += 1;
+}
+____________________________________________________________________
+Dear All please find the example output in week 3 module...
+
+What to submit for Assignment:
+
+1) The Essay discussing what has been done
+
+2) entire source code (project)
+
+3) source code copied in word/pdf with screenshots of its execution
+
+have a nice weekend
+
+best
+
+
+
+
+
+
+
+// Calculate binary representation of the input decimal number
+int* binaryoutput = (int*) malloc(sizeof(int));
+int index = 0;
+while (*inum > 0) {
+    binaryoutput = (int*) realloc(binaryoutput, (index + 1) * sizeof(int));
+    binaryoutput[index++] = *inum % 2;
+    *inum /= 2;
+}
+
+// Perform 1's complement on binaryoutput
+int* onescomp = (int*) malloc(sizeof(int) * index);
+for (int i = 0; i < index; i++) {
+    onescomp[i] = binaryoutput[i] == 0 ? 1 : 0;
+}
+
+// Perform 2's complement on binaryoutput
+int* twoscomp = (int*) malloc(sizeof(int) * index);
+int carry = 1;
+for (int i = index - 1; i >= 0; i--) {
+    twoscomp[i] = binaryoutput[i] ^ 1;
+    if (carry) {
+        twoscomp[i] ^= 1;
+        carry = binaryoutput[i];
+    }
+}
+
+// Print binary, 1's complement, and 2's complement representations
+printf("Your number in Binary: ");
+for (int i = index - 1; i >= 0; i--) {
+    printf("%d", binaryoutput[i]);
+}
+printf("\n");
+
+printf("Your number in One's complement: ");
+for (int i = 0; i < index; i++) {
+    printf("%d", onescomp[i]);
+}
+printf("\n");
+
+printf("Your number in Two's complement: ");
+for (int i = 0; i < index; i++) {
+    printf("%d", twoscomp[i]);
+}
+printf("\n");
+
+// Free dynamically allocated memory
+free(binaryoutput);
+free(onescomp);
+free(twoscomp);
+free(inum);
+free(bitsize);
+
+
+
+
+Please input a decimal number: 345
+In what bit system do you want to output our number? (i.g. 4/8/16/32/64): 16
+Your number in Binary: 101011001
+Your number in One's complement: 011001010
+Your number in Two's complement: 011001001
+
+Please input a decimal number: 32
+In what bit system do you want to output our number? (i.g. 4/8/16/32/64): 8
+Your number in Binary: 100000
+Your number in One's complement: 111110
+Your number in Two's complement: 111101
+
+
+____________________________________________________________________
+
+Please indicate any deciaml number: asdfh
+Input msut be a decimal, please try again: 345
+Error, input size would result in overflow, try again (4/8/16/32/64): 16
+Your number in binary will be: 0000000101011001
+Your number in One's complement: 1111111010100110
+Your number in Two's complement: 1111111010100111
+
+Please indicate any deciaml number: 32
+Error, input size would result in overflow, try again (4/8/16/32/64): 8
+Your number in binary will be: 00100000
+Your number in One's complement: 11011111
+Your number in Two's complement: 11100000
+
+Enter 'q' to quit, Enter 'n' for new numebr: q
